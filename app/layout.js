@@ -3,7 +3,7 @@ import "./globals.css";
 // Import the Inter font from Google Fonts using Next.js font optimization
 import { Inter } from "next/font/google";
 import Header from "@/components/header";
-
+import { ClerkProvider } from "@clerk/nextjs";
 // Export metadata for the application that affects SEO and browser display
 // This is a Next.js specific feature for App Router
 export const metadata = {
@@ -19,26 +19,28 @@ const inter = Inter({ subsets: ["latin"] });
 // This component provides the HTML structure for every page
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      {/* 
+    <ClerkProvider>
+      <html lang="en">
+        {/* 
         Apply the Inter font family and enable font smoothing with antialiased
         The children prop represents the page content that will be rendered here
       */}
-      <body
-        className={`${inter.className} antialiased flex flex-col min-h-screen`}
-      >
-        {/* Header */}
-        <Header />
-        <main className="bg-gradient-to-b from-blue-50 to-white flex-grow">
-          {children}
-        </main>
-        {/* Footer */}
-        <footer className="bg-blue-100 py-12">
-          <div className="container mx-auto px-4 text-center text-gray-600">
-            <p>Made with ❤️ by Daniel Ahn</p>
-          </div>
-        </footer>
-      </body>
-    </html>
+        <body
+          className={`${inter.className} antialiased flex flex-col min-h-screen`}
+        >
+          {/* Header */}
+          <Header />
+          <main className="bg-gradient-to-b from-blue-50 to-white flex-grow">
+            {children}
+          </main>
+          {/* Footer */}
+          <footer className="bg-blue-100 py-12">
+            <div className="container mx-auto px-4 text-center text-gray-600">
+              <p>Made with ❤️ by Daniel Ahn</p>
+            </div>
+          </footer>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
