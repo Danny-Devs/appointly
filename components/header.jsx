@@ -1,19 +1,36 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { PenBox } from "lucide-react";
+import Link from 'next/link';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { PenBox } from 'lucide-react';
+import { SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/nextjs';
 
 const Header = () => {
   return (
     <nav className="py-2 px-4 flex justify-between items-center shadow-md border-b-2 border-gray-200">
       <Link href="/" className="flex items-center">
-        <Image src="/logo.png" alt="Appointly" width="150" height="60" className="w-auto h-16" />
+        <Image
+          src="/logo.png"
+          alt="Appointly"
+          width="150"
+          height="60"
+          className="w-auto h-16"
+        />
       </Link>
       <div className="flex items-center gap-2">
         <Link href="/events?create=true">
-          <Button><PenBox />Create Event</Button>
+          <Button>
+            <PenBox />
+            Create Event
+          </Button>
         </Link>
-        <Button variant="outline">Login</Button>
+        <SignedOut>
+          <SignInButton forceRedirectUrl="/dashboard">
+            <Button variant="outline">Login</Button>
+          </SignInButton>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
     </nav>
   );
