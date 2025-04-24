@@ -2,7 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PenBox } from 'lucide-react';
-import { SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/nextjs';
+import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
+import UserMenu from '@/components/user-menu';
 
 const Header = () => {
   return (
@@ -29,7 +30,7 @@ const Header = () => {
           </SignInButton>
         </SignedOut>
         <SignedIn>
-          <UserButton />
+          <UserMenu />
         </SignedIn>
       </div>
     </nav>
