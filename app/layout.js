@@ -4,6 +4,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Header from "@/components/header";
 import { ClerkProvider } from "@clerk/nextjs";
+
 // Export metadata for the application that affects SEO and browser display
 // This is a Next.js specific feature for App Router
 export const metadata = {
@@ -26,11 +27,11 @@ export default function RootLayout({ children }) {
         The children prop represents the page content that will be rendered here
       */}
         <body
-          className={`${inter.className} antialiased flex flex-col min-h-screen`}
+          className={`${inter.className} antialiased flex flex-col`}
         >
           {/* Header */}
           <Header />
-          <main className="bg-gradient-to-b from-blue-50 to-white flex-grow">
+          <main className="bg-gradient-to-b from-blue-50 to-white min-h-screen">
             {children}
           </main>
           {/* Footer */}
